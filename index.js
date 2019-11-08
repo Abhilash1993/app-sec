@@ -11,7 +11,7 @@ app.use(function(req, res, next) {
 	next();
 });
 app.use(express.json());
-app.set("port", process.env.PORT || 80);
+app.set("port", process.env.PORT || 8080);
 
 const host = "localhost";
 const user = "root";
