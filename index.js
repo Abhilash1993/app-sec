@@ -13,7 +13,7 @@ app.use(function(req, res, next) {
 app.use(express.json());
 app.set("port", process.env.PORT || 8080);
 
-const host = "localhost";
+const host = "ec2-54-213-58-16.us-west-2.compute.amazonaws.com";
 const user = "root";
 const pswd = "123456789";
 const dbname = "app_sec";
