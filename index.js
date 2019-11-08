@@ -22,7 +22,6 @@ const dbname = "app_sec";
 const pool = mysql.createPool({
 	host: host,
 	user: user,
-	password: pswd,
 	port: "3306",
 	database: dbname
 });
