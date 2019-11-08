@@ -59,6 +59,25 @@ app.post("/api/forum", (req, res) => {
 	});
 });
 
+app.post("/user/create", (req, res) => {
+	let queryString = `insert into Users values('${req.body.name}','${req.body.password}')`;
+	pool.query(queryString, function(err, rows, fields) {
+		if (err) res.status(400).send("User already exists!");
+
+		res.json({ message: "successful" });
+	});
+});
+
+app.post("/user/login", (req, res) => {
+	let queryString = `select * from Users where name='${req.body.name}' and password='${req.body.password}'`;
+	pool.query(queryString, function(err, rows, fields) {
+		if (err) res.status(500).send("Something went wrong");
+		else if (rows.length == 0)
+			res.status(401).send("Invalid username or password");
+		else res.json({ message: "successfully logged in" });
+	});
+});
+
 app.listen(app.get("port"), () => {
 	console.log(`Find the server at: http://localhost:${app.get("port")}/`); // eslint-disable-line no-console
 });
